@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Menu from "./components/Menu";
+import AnimalSounds from "./components/AnimalSounds";
+import ColorMatch from "./components/ColorMatch";
+import MathPuzzle from "./components/MathPuzzle";
+import "./styles/app.css";
 
 function App() {
+  const [game, setGame] = useState("menu");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {game === "menu" && <Menu setGame={setGame} />}
+      {game === "animal" && <AnimalSounds setGame={setGame} />}
+      {game === "color" && <ColorMatch setGame={setGame} />}
+      {game === "math" && <MathPuzzle setGame={setGame} />}
     </div>
   );
 }
